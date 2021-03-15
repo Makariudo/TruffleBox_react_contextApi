@@ -1,25 +1,47 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import withContext from "./context";
+import useContract from './hooks/useContract'
 import './App.css';
 
-function App() {
+function App(props) {
+  const { value: { connectWeb3, contract, accounts, storageValue } } = props
+  
+  const [value, setValue]  = useState(0)
+  const [input, setInput] = useState(0)
+  /* useContract */
+  const { retrieve, store, isValidated } = useContract(contract, accounts, setValue)
+  
+  useEffect(() => {
+    connectWeb3();
+  }, [])
+
+ useEffect(() => {
+   if(contract){
+     setValue(storageValue)
+     setInput(storageValue)
+   }
+  }, [contract])
+ 
+
+  const handleChange = e => setInput(e.target.value)
+  const handleSubmit = e => {
+    e.preventDefault()
+    if (!input) { return }
+    store(input)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <h1>Good to Go!</h1>
+        <p>Your Truffle Box is installed and ready.</p>
+        <h2>Smart Contract Example</h2>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {contract ? "Your contracts compiled and migrated successfully" : "Try to deploy your contract !" }
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <p>
+          Try changing the value stored on your smart contract : <input type="number" name="inputValue" value={input} onChange={handleChange}></input> <button type="button" onClick={handleSubmit} >Submit</button>
+        </p>
+        <div>The stored value is: {!isValidated ? "data is loading..." : value}</div>
+      </div>
   );
 }
-
-export default App;
+export default withContext(App);

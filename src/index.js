@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Web3Provider from './context/Web3Provider'
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Web3Provider>
     <App />
-  </React.StrictMode>,
+  </Web3Provider>,
   document.getElementById('root')
 );
 
