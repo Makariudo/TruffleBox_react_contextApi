@@ -18,4 +18,12 @@ contract("SimpleStorage", accounts => {
     should.exist(StorageInstance.address)
   });
 
+  context("set/get value", () => {
+    it("should be able to set a value", async () => {
+      await StorageInstance.set(3, { from: owner })
+      const value = await StorageInstance.get.call();
+      assert.equal(value,3);
+    })
+});
+
 })

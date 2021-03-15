@@ -1,3 +1,36 @@
+# Welcome to TruffleReactContextApi boilerPlate!
+
+Versions :
+
+**Truffle** v5.2.2 (core: 5.2.2)
+**Solidity** ^0.7.4(solc-js)
+**Node** V14.16.0
+**Web3.js** v1.2.9
+
+## STEP 1
+
+### `npm install`
+
+### Put your mmnemonic phrase and infura infos in your .env
+
+### Config your truffle-config as you wish
+
+### Write your contracts in /contracts and run `truffle compile`
+
+### Write your test with mocha and chai in /Test 
+
+### Deploy your contracts `truffle migrate --network 'your network' (--reset if you've already deployed your contract`
+
+
+## STEP2
+
+### run `npm run start`
+
+### Change / Make your Dapp with contextApi and your custom Hook 
+
+>Do your stuff
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +101,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
