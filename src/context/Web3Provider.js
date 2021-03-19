@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import SimpleStorageContract from "../contracts/SimpleStorage.json";
 import getWeb3 from "../utils/getWeb3";
 import { Web3Context } from '.'
@@ -54,12 +54,10 @@ const Web3Provider = ({ children }) => {
             
     }
     
-    const value = useMemo(() => {
-        return {
-            connectWeb3: connect,
-            ...state,
-        }
-    }, [state])//
+    const value = {
+    connectWeb3: connect,
+    ...state,
+    }
 
     //retourn le provider avec la value qui vaut notre state global
     return <Provider value={value}>{children}</Provider>

@@ -9,18 +9,18 @@ function App(props) {
   const [value, setValue]  = useState(0)
   const [input, setInput] = useState(0)
   /* useContract */
-  const { retrieve, store, isValidated } = useContract(contract, accounts, setValue)
+  const { store, isValidated } = useContract(contract, accounts, setValue)
   
   useEffect(() => {
     connectWeb3();
-  }, [])
+  }, [connectWeb3])
 
  useEffect(() => {
    if(contract){
      setValue(storageValue)
      setInput(storageValue)
    }
-  }, [contract])
+  }, [contract, storageValue])
  
 
   const handleChange = e => setInput(e.target.value)
